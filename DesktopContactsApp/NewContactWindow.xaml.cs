@@ -26,7 +26,8 @@ namespace DesktopContactsApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            // Save Contact
+            Close();
         }
     }
 }
