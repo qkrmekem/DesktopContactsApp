@@ -36,10 +36,18 @@ namespace DesktopContactsApp
 
         void ReadDatabase()
         {
+            List<Contact> contacts;
             using (SQLiteConnection conn = new SQLiteConnection(App.databasePath))
             {
                 conn.CreateTable<Contact>();
-                var contacts = conn.Table<Contact>().ToList();
+                // var을 사용하는 경우 변수에 값을 바로 할당할 때에만 사용 가능
+                // var contacts = conn.Table<Contact>().ToList();
+                contacts = conn.Table<Contact>().ToList();
+            }
+
+            if(contacts != null)
+            {
+                contactsListView.ItemsSource = contacts;
             }
         }
     }
